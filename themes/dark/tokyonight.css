@@ -1,10 +1,512 @@
-:root {
-  --PGBackgroundD: rgb(36, 40, 59);
-  --PGBackground2D: rgb(26, 27, 38);
-  --PGTextBackgroundD: rgb(26, 27, 38);
-  --PGColorTextD: rgb(154, 165, 206);
-  --accentD: rgb(169, 177, 214);
-  --accent-hoverD: rgb(154, 165, 206);
-  --accent-selectedD: rgb(86, 95, 137);
-  --accent-focusedD: rgb(169, 177, 214);
+/* ==UserStyle==
+@name           Mastodon Catppuccin
+@namespace      github.com/catppuccin/mastodon
+@homepageURL    https://github.com/catppuccin/mastodon
+@version        1.1.3
+@description    Soothing pastel theme for Mastodon
+@author         Catppuccin
+@updateURL      https://github.com/catppuccin/mastodon/raw/main/dist/catppuccin.user.css
+@preprocessor   less
+@var select lightFlavour "Light Flavour" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
+@var select darkFlavour "Dark Flavour" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
+@var select accentColour  "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire*", "sky:Sky", "lavender:Lavender", "subtext0:Grey"]
+==/UserStyle== */
+@-moz-document domain("mstdn.social"),
+domain("fosstodon.org"),
+domain("tech.lgbt"),
+domain("mastodon.social") {
+
+    :root {
+        --rosewater: #f7768e;
+        --flamingo: #ff9e64;
+        --pink: #e0af68;
+        --mauve: #9ece6a;
+        --red: #73daca;
+        --maroon: #b4f9f8;
+        --peach: #2ac3de;
+        --yellow: #7dcfff;
+        --green: #7aa2f7;
+        --teal: #bb9af7;
+        --sky: #c0caf5;
+        --sapphire: #a9b1d6;
+        --blue: #9aa5ce;
+        --lavender: #cfc9c2;
+        --text: #565f89;
+        --subtext1: #414868;
+        --subtext0: #24283b;
+        --overlay2: #1a1b26;
+        --overlay1: #f4dbd6;
+        --overlay0: #f2cdcd;
+        --surface2: #f5c2e7;
+        --surface1: #cba6f7;
+        --surface0: #f38ba8;
+        --base: #c0caf5;
+        --mantle: #a9b1d6;
+        --crust: #bb9af7;
+        --accent-colour: #c0caf5;
+    }
+
+    .theme-mastodon-light,
+    :root:has(.theme-mastodon-light) {
+        #mastodon(@lightFlavour, @accentColour);
+    }
+
+    .theme-default,
+    .theme-contrast,
+    :root:has(.theme-default),
+    :root:has(.theme-contrast) {
+        #mastodon(@darkFlavour, @accentColour);
+    }
+
+    #mastodon(@lookup, @accent) {
+        :root {
+            --rosewater: var(--catppuccin, @lookup, @rosewater);
+            --flamingo: var(--catppuccin, @lookup, @flamingo);
+            --pink: var(--catppuccin, @lookup, @pink);
+            --mauve: var(--catppuccin, @lookup, @mauve);
+            --red: var(--catppuccin, @lookup, @red);
+            --maroon: var(--catppuccin, @lookup, @maroon);
+            --peach: var(--catppuccin, @lookup, @peach);
+            --yellow: var(--catppuccin, @lookup, @yellow);
+            --green: var(--catppuccin, @lookup, @green);
+            --teal: var(--catppuccin, @lookup, @teal);
+            --sky: var(--catppuccin, @lookup, @sky);
+            --sapphire: var(--catppuccin, @lookup, @sapphire);
+            --blue: var(--catppuccin, @lookup, @blue);
+            --lavender: var(--catppuccin, @lookup, @lavender);
+            --text: var(--catppuccin, @lookup, @text);
+            --subtext1: var(--catppuccin, @lookup, @subtext1);
+            --subtext0: var(--catppuccin, @lookup, @subtext0);
+            --overlay2: var(--catppuccin, @lookup, @overlay2);
+            --overlay1: var(--catppuccin, @lookup, @overlay1);
+            --overlay0: var(--catppuccin, @lookup, @overlay0);
+            --surface2: var(--catppuccin, @lookup, @surface2);
+            --surface1: var(--catppuccin, @lookup, @surface1);
+            --surface0: var(--catppuccin, @lookup, @surface0);
+            --base: var(--catppuccin, @lookup, @base);
+            --mantle: var(--catppuccin, @lookup, @mantle);
+            --crust: var(--catppuccin, @lookup, @crust);
+            --accent-colour: var(--catppuccin, @lookup, @accent);
+        }
+
+        body,
+        .tabs-bar__wrapper,
+        .admin-wrapper .sidebar-wrapper__inner {
+            background: var(--crust);
+            color: var(--text);
+        }
+
+        .account__header__bio .account__header__fields dt {
+            background: transparent;
+        }
+
+        .search-popout,
+        .search-popout em,
+        .dismissable-banner__message,
+        .account__header__bio .account__header__fields dt,
+        .account__section-headline a.active,
+        .account__section-headline button.active,
+        .notification__filter-bar a.active,
+        .notification__filter-bar button.active,
+        .account__header__bio .account__header__content,
+        .navigation-bar,
+        .column-link__badge,
+        .column-subheading,
+        .account__display-name strong,
+        .status__display-name strong,
+        .notification__message,
+        .public-layout .public-account-bio .account__header__content,
+        .reply-indicator__content,
+        .status__content,
+        .card__bar .display-name strong {
+            color: var(--text);
+        }
+
+
+        .search-popout span,
+        .link-footer p,
+        .link-footer p a {
+            color: var(--subtext1);
+        }
+
+        .account__header__tabs__name h1 small,
+        .account__header__bio .account__header__fields dd,
+        .display-name__account,
+        .status__relative-time,
+        .empty-column-indicator,
+        .follow_requests-unlocked_explanation,
+        .account .account__display-name,
+        .label_input .search__input,
+        .search__input:focus,
+        .account__header__fields dt {
+            color: var(--subtext0);
+        }
+
+        .compose-panel hr,
+        .navigation-panel hr {
+            border-top-color: var(--subtext0);
+        }
+
+        .trends__item,
+        .status,
+        .getting-started__trends h4,
+        .trends__item__name span,
+        .story {
+            border-color: var(--subtext0);
+        }
+
+
+        .account__header__tabs__name h1,
+        .account__header__content a,
+        .account__header__bio .account__header__fields a,
+        .empty-column-indicator a,
+        .follow_requests-unlocked_explanation a,
+        .column-back-button,
+        .icon-button,
+        .icon-button.inverted,
+        .text-icon-button,
+        .icon-button.active,
+        .public-layout .public-account-bio .account__header__fields a,
+        .column-header__back-button,
+        .notification__message .fa,
+        .navigation-bar strong,
+        .reply-indicator__content a.unhandled-link,
+        .status__content a.unhandled-link {
+            color: var(--accent-colour);
+        }
+
+
+        .icon-button:active,
+        .icon-button:focus,
+        .icon-button:hover,
+        .text-icon-button:active,
+        .text-icon-button:focus,
+        .text-icon-button:hover,
+        .icon-button.inverted:active,
+        .icon-button.inverted:focus,
+        .icon-button.inverted:hover,
+        .public-layout .public-account-bio .account__header__fields a:hover {
+            color: var(--accent-colour);
+        }
+
+
+        .ui__header,
+        .column-header,
+        .column-header__button,
+        .column-header__back-button,
+        .column-back-button,
+        .drawer__header,
+        .account__section-headline,
+        .notification__filter-bar,
+        .account__section-headline button,
+        .notification__filter-bar button,
+        .account__header,
+        .search__input,
+        .search__input:focus,
+        .column-link__badge,
+        .column-subheading,
+        .public-layout .header,
+        .public-layout .public-account-header__bar::before,
+        .account__header__fields,
+        .account__header__fields dt,
+        .account__header__fields dd:not(.account__header__bio .account__header__fields dd),
+        .focusable:focus,
+        .admin-wrapper .sidebar ul .simple-navigation-active-leaf .selected {
+            border-color: var(--mantle);
+            background: var(--surface1);
+        }
+
+        .admin-wrapper .sidebar ul a:hover,
+        .admin-wrapper .sidebar ul .simple-navigation-active-leaf a:hover {
+            background: var(--surface0);
+        }
+
+        .dismissable-banner {
+            border-color: var(--surface1);
+            background: var(--base);
+        }
+
+        .theme-mastodon-light .account__header__bar,
+        .theme-mastodon-light .column-header__back-button,
+        .account__header__bio .account__header__fields dl,
+        .account__header__bio .account__header__fields,
+        .empty-column-indicator,
+        .column > .scrollable,
+        .nothing-here,
+        .public-layout .public-account-bio,
+        .hero-widget__text,
+        body.admin,
+        .admin-wrapper .sidebar ul a.selected,
+        .admin-wrapper .sidebar ul ul {
+            border-color: var(--mantle);
+            background: var(--base);
+        }
+
+        .public-layout .public-account-header__tabs__tabs .counter::after {
+            border-color: var(--accent-colour);
+        }
+
+        .public-layout .public-account-header__tabs__tabs .counter.active::after {
+            border-color: var(--accent-colour);
+        }
+
+        .account,
+        .load-gap {
+            border-color: var(--mantle);
+        }
+
+        .account__section-headline a.active::after {
+            border-color: transparent transparent var(--base);
+        }
+
+        .account__section-headline a.active::before,
+        .account__section-headline button.active::after,
+        .account__section-headline button.active::before,
+        .notification__filter-bar a.active::after,
+        .notification__filter-bar a.active::before,
+        .notification__filter-bar button.active::after,
+        .notification__filter-bar button.active::before {
+            border-color: transparent transparent var(--mantle);
+        }
+
+
+        .search-popout,
+        .drawer__header a:hover,
+        .column-header__button:hover,
+        .account__section-headline button:hover,
+        .notification__filter-bar button:hover,
+        .account__section-headline a:hover {
+            background: var(--surface2);
+        }
+
+        .column-link .active,
+        .column-link--transparent.active,
+        .column-link--transparent:focus,
+        .column-link:focus {
+            color: var(--accent-colour);
+        }
+
+        .column-link--transparent:hover,
+        .column-link:hover {
+            color: var(--accent-colour);
+        }
+
+        .button.button-tertiary:focus,
+        .button.button-tertiary:hover,
+        .button.button-tertiary:active {
+            color: var(--base);
+        }
+
+        .button.button-tertiary {
+            border-color: var(--accent-colour);
+        }
+
+        .button,
+        .button.button-tertiary,
+        .button.logo-button {
+            background: var(--accent-colour);
+            color: var(--base);
+        }
+
+        .button.logo-button svg {
+            fill: currentColor;
+        }
+
+
+        .public-layout .header .nav-button {
+            background-color: var(--surface1);
+        }
+
+        .public-layout .header .nav-button:hover {
+            background-color: var(--surface2);
+        }
+
+        .button.button-secondary:active,
+        .button.button-secondary:focus,
+        .button.button-secondary:hover {
+            border-color: var(--accent-colour);
+            color: var(--base);
+            transition: .4s;
+        }
+
+        .button:active,
+        .button:focus,
+        .button:hover,
+        .button.button-tertiary:active,
+        .button.button-tertiary:focus,
+        .button.button-tertiary:hover,
+        .button.logo-button:active,
+        .button.logo-button:focus,
+        .button.logo-button:hover {
+            background: var(--accent-colour);
+        }
+
+        .drawer__inner,
+        .drawer__inner__mastodon {
+            background-color: var(--base);
+        }
+
+        .compose-form .compose-form__modifiers,
+        .compose-form .autosuggest-textarea__textarea,
+        .compose-form .spoiler-input__input {
+            background: var(--surface1);
+            color: var(--text);
+        }
+
+        .compose-form .autosuggest-textarea__textarea::placeholder {
+            color: var(--subtext0);
+        }
+
+        .compose-form .compose-form__buttons-wrapper {
+            background: var(--surface0);
+        }
+
+        .load-more:hover {
+            background-color: var(--mantle);
+        }
+
+        .character-counter {
+            color: var(--subtext0);
+        }
+
+        .public-layout .header,
+        .hero-widget,
+        .public-layout .public-account-header,
+        .public-layout .public-account-bio,
+        .nothing-here {
+            box-shadow: none;
+        }
+
+        .dropdown-menu__arrow:before,
+        .dropdown-menu__item a,
+        .dropdown-menu__item button,
+        .dropdown-menu__container__list,
+        .dropdown-menu.bottom {
+            background: var(--surface0);
+            color: var(--text);
+        }
+
+        .dropdown-menu__item a:hover,
+        .dropdown-menu__item button:hover {
+            background: var(--surface1);
+        }
+
+        .input-copy,
+        .simple_form input[type=text],
+        .simple_form textarea,
+        .simple_form .block-button,
+        .simple_form .button,
+        .simple_form button {
+            background: var(--mantle);
+            color: var(--text);
+        }
+
+        .simple_form .block-button:hover,
+        .simple_form .button:hover,
+        .simple_form button:hover {
+            background: var(--surface0);
+        }
+
+        .simple_form .input.with_label .label_input > label,
+        .simple_form select,
+        .accounts-table__count,
+        .simple_form textarea {
+            color: var(--text);
+        }
+
+        .simple_form textarea,
+        .simple_form input[type=password],
+        .simple_form input[type=number],
+        .simple_form input[type=text] {
+            border: 1px solid var(--crust);
+        }
+
+        .simple_form input[type=email]:required:valid {
+            border: 1px solid var(--green)
+        }
+
+        .simple_form input[type=password],
+        .simple_form input[type=number],
+        .simple_form input[type=email]:required:valid,
+        .simple_form input[type=password]:required:invalid:not(:placeholder-shown) {
+            color: var(--text);
+            background: var(--mantle);
+        }
+
+        .simple_form input[type=password]:required:invalid:not(:placeholder-shown) {
+            border: 1px solid var(--red);
+        }
+
+        .simple_form select {
+            background: var(--mantle) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14.933 18.467' height='19.698' width='15.929'><path d='M3.467 14.967l-3.393-3.5H14.86l-3.392 3.5c-1.866 1.925-3.666 3.5-4 3.5-.335 0-2.135-1.575-4-3.5zm.266-11.234L7.467 0 11.2 3.733l3.733 3.734H0l3.733-3.734z' fill='%2342485A'/></svg>") no-repeat right 8px center/auto 16px;
+            border: 1px solid var(--crust);
+        }
+
+        .simple_form input[type=datetime-local]:active,
+        .simple_form input[type=datetime-local]:focus,
+        .simple_form input[type=email]:active,
+        .simple_form input[type=email]:focus,
+        .simple_form input[type=number]:active,
+        .simple_form input[type=number]:focus,
+        .simple_form input[type=password]:active,
+        .simple_form input[type=password]:focus,
+        .simple_form input[type=text]:active,
+        .simple_form input[type=text]:focus,
+        .simple_form input[type=url]:active,
+        .simple_form input[type=url]:focus,
+        .simple_form textarea:active,
+        .simple_form textarea:focus {
+            border-color: var(--accent-colour) !important;
+            background: var(--mantle) !important;
+            color: var(--text) !important;
+        }
+
+        .table > thead > tr > th {
+            border-color: var(--accent-colour) !important;
+        }
+
+        .batch-table__toolbar,
+        .table > thead > tr > th {
+            background: var(--surface0) !important;
+            color: var(--text) !important;
+        }
+
+        .simple_form input[type=datetime-local]:hover,
+        .simple_form input[type=email]:hover,
+        .simple_form input[type=number]:hover,
+        .simple_form input[type=password]:hover,
+        .simple_form input[type=text]:hover,
+        .simple_form input[type=url]:hover,
+        .simple_form textarea:hover {
+            background: var(--mantle) !important;
+            border-color: var(--accent-colour) !important;
+            transition: 0.4s;
+        }
+
+        .batch-table__row {
+            background: var(--surface1);
+        }
+
+        .batch-table__row:hover,
+        .batch-table__row:nth-child(2n):hover {
+            background: var(--surface2);
+        }
+
+        .batch-table__row:nth-child(2n),
+        .table > tbody > tr > td {
+            background: var(--surface0);
+        }
+
+        .table > thead > tr > th {
+            border-bottom: 2px solid var(--surface0);
+        }
+
+        .positive-hint {
+            color: var(--green) !important;
+        }
+
+        .card__bar {
+            background: var(--surface0);
+        }
+    }
 }
